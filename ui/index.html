@@ -1,53 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YouTube RAG Assistant</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="card">
-            <h1>YouTube RAG Assistant</h1>
-            <p class="subtitle">
-                Ask questions about any YouTube video
-            </p>
-
-            <div class="section">
-                <label>YouTube URL</label>
-                <input
-                    type="text"
-                    id="videoUrl"
-                    placeholder="Paste YouTube URL here..."
-                >
-                <button id="loadBtn">Load Video</button>
-            </div>
-
-            <div class="status" id="status">
-                Ready
-            </div>
-
-            <div class="section">
-                <label>Question</label>
-                <textarea
-                    id="question"
-                    placeholder="Ask a question about the video..."
-                ></textarea>
-
-                <button id="askBtn">Ask</button>
-            </div>
-
-            <div class="answer-box">
-                <h3>Answer</h3>
-                <p id="answer">
-                    Your answer will appear here...
-                </p>
-            </div>
+      <div class="card">
+        <div class="header">
+          <h1>🎥 YouTube RAG Assistant</h1>
+          <p class="subtitle">Ask questions about any YouTube video</p>
         </div>
+
+        <div class="section">
+          <label for="videoUrl">YouTube URL</label>
+          <div class="input-group">
+            <input
+              type="text"
+              id="videoUrl"
+              placeholder="https://www.youtube.com/watch?v=..."
+            />
+          </div>
+          <button id="loadBtn" class="btn-primary">Load Video</button>
+          <div class="video-info" id="videoInfo" style="display: none">
+            <p id="videoTitle"></p>
+          </div>
+        </div>
+
+        <div class="status" id="status">Ready</div>
+
+        <div class="section">
+          <label for="question">Ask a Question</label>
+          <textarea
+            id="question"
+            placeholder="Ask anything about the video..."
+          ></textarea>
+          <button id="askBtn" class="btn-primary">Ask</button>
+        </div>
+
+        <div class="answer-box">
+          <h3>Answer</h3>
+          <p id="answer">Your answer will appear here...</p>
+        </div>
+      </div>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

@@ -15,6 +15,3 @@ def get_transcript(url: str) -> str:
     
     return text
 
-if __name__ == "__main__":
-    url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    get_transcript(url)
