@@ -9,8 +9,8 @@ const videoTitle = document.getElementById("videoTitle");
 let videoLoaded = false;
 
 askBtn.disabled = true;
-askBtn.style.setProperty("opacity", "0.5", "important");
-askBtn.style.setProperty("cursor", "not-allowed", "important");
+askBtn.style.opacity = "0.5";
+askBtn.style.cursor = "not-allowed";
 
 loadBtn.addEventListener("click", async () => {
   const url = videoUrlInput.value.trim();
@@ -37,11 +37,12 @@ loadBtn.addEventListener("click", async () => {
     });
 
     const data = await response.json();
+    console.log("load-video response:", data);
 
     if (data.error) {
       statusText.classList.remove("loading");
       statusText.classList.add("error");
-      statusText.textContent = data.message;
+      statusText.textContent = data.message || "Failed to load video.";
     } else {
       videoLoaded = true;
       statusText.classList.remove("loading");
@@ -52,15 +53,15 @@ loadBtn.addEventListener("click", async () => {
       videoTitle.textContent = `Loaded: ${url.substring(0, 50)}...`;
 
       askBtn.disabled = false;
-      askBtn.removeAttribute("disabled");
-      askBtn.style.setProperty("opacity", "1", "important");
-      askBtn.style.setProperty("cursor", "pointer", "important");
+      askBtn.style.opacity = "1";
+      askBtn.style.cursor = "pointer";
+      console.log("Ask button enabled");
     }
   } catch (error) {
     statusText.classList.remove("loading");
     statusText.classList.add("error");
-    statusText.textContent = error.message;
-    console.error(error);
+    statusText.textContent = "Network error: " + error.message;
+    console.error("Fetch error:", error);
   } finally {
     loadBtn.disabled = false;
     loadBtn.textContent = "Load Video";
@@ -72,11 +73,13 @@ askBtn.addEventListener("click", async () => {
 
   if (!question) {
     answerText.textContent = "Please enter a question";
+    answerText.style.display = "block";
     return;
   }
 
   if (!videoLoaded) {
     answerText.textContent = "Please load a video first";
+    answerText.style.display = "block";
     return;
   }
 
@@ -102,11 +105,13 @@ askBtn.addEventListener("click", async () => {
     statusText.classList.remove("error");
     statusText.textContent = "Answer ready";
     answerText.textContent = data.answer || "No answer found.";
+    answerText.style.display = "block";
   } catch (error) {
     statusText.classList.remove("loading");
     statusText.classList.add("error");
     statusText.textContent = "Error";
     answerText.textContent = "Error getting answer: " + error.message;
+    answerText.style.display = "block";
     console.error(error);
   } finally {
     askBtn.disabled = false;

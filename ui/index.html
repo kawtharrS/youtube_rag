@@ -23,7 +23,7 @@
               placeholder="https://www.youtube.com/watch?v=..."
             />
           </div>
-          <button id="loadBtn" class="btn-primary">Load Video</button>
+          <button id="loadBtn" type="button" class="btn-primary">Load Video</button>
           <div class="video-info" id="videoInfo" style="display: none">
             <p id="videoTitle"></p>
           </div>
@@ -37,12 +37,8 @@
             id="question"
             placeholder="Ask anything about the video..."
           ></textarea>
-          <button id="askBtn" class="btn-primary">Ask</button>
-        </div>
-
-        <div class="answer-box">
-          <h3>Answer</h3>
-          <p id="answer">Your answer will appear here...</p>
+          <button id="askBtn" type="button" class="btn-primary">Ask</button>
+          <div id="answer" class="answer"></div>
         </div>
       </div>
     </div>
